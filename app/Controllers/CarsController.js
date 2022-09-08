@@ -10,6 +10,12 @@ function drawCars() {
   setHTML('listings', template)
 }
 
+function drawAddCarForm() {
+  let template = ""
+  
+  setHTML("offcanvas-body", appState.carFormTemplate)
+}
+
 
 export class CarsController {
   constructor() {
@@ -17,11 +23,13 @@ export class CarsController {
 
     // NOTE Sets up a listener to be triggered each time a change occurs to the cars array causing the page to re-render each of the cars 
     appState.on('cars', drawCars)
+    drawAddCarForm()
   }
 
 
   showCars() {
     drawCars()
+    drawAddCarForm()
   }
 
 
@@ -55,7 +63,4 @@ export class CarsController {
       console.error('addCar', error)
     }
   }
-
-
-
 }
